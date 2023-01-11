@@ -1,0 +1,97 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node //creating a node
+{
+ int data;
+ struct node *next;
+};
+struct node *front,*rear;
+void insert()
+{ 
+  struct node*ptr=(struct node*)malloc(sizeof(struct node));
+  int item;
+  if(ptr==NULL)
+  {
+   printf("overflow");
+   return;
+  }
+ else
+ {
+   printf("enter the element:");
+   scanf("%d",&item);
+   ptr->data=item;
+  if(front==NULL)
+  {
+   front=ptr;
+   rear=ptr;
+   front->next=NULL;
+   front->next=NULL;
+  }
+  else
+  {
+   rear->next-ptr;
+   rear=ptr;
+   rear->next=NULL;
+   }
+  }
+ }  
+void delete()
+{
+ struct node*ptr=(struct node*)malloc(sizeof(struct node));
+ if(front==NULL)
+ {
+ printf("Underflow");
+ return;
+ }
+ else
+ {
+ ptr=front;
+ printf("Deleted eleement %d\n",ptr->data);
+ front=front->next;
+ free(ptr);
+ }
+ }
+ void display()
+ {
+ struct node *ptr;
+ ptr=front;
+ if(ptr==NULL)
+ {
+ printf("Underflow");
+ return;
+ }
+ else
+ {
+ printf("Printing elements\n");
+ while(ptr!=NULL)
+ {
+ printf("%d\n",ptr->data);
+ ptr=ptr->next;
+ }
+ }
+ }
+ int main()
+ {
+ int choice;
+ while(1)
+ {
+ printf("Operations are:\n");
+ printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n");
+ printf("Enter your choice:\n");
+ scanf("%d",&choice);
+ switch(choice)
+ {
+ case 1:insert();
+        break;
+  case 2:delete();
+        break;
+   case 3:display();
+        break;            
+   case 4:exit(0);
+  default: printf("invalid choice");
+   break;
+  }
+  }
+  return 0;
+}
